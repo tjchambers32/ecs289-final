@@ -2,16 +2,11 @@ import os
 import shutil 
 
 
-ROOT_FOLDER = '../../../python_typing/'
-# REPOS_FOLDER = 'raw_dataset/data'
-# REPOS_FOLDER = '../../../pycodesuggest/travis_test/travis_test'
+ROOT_FOLDER = 'data'
 REPOS_FOLDER = os.path.join(ROOT_FOLDER, 'repos')
 PROCESSED_FOLDER = os.path.join(ROOT_FOLDER, 'processed')
 
 FILE_ID = 0
-def move_file(src):
-    shutil.copy2(src, PROCESSED_FOLDER)
-
 count = 0
 type_1_count = 0
 type_2_count = 0

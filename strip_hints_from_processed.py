@@ -2,7 +2,7 @@ import os
 
 import strip_hints
 
-ROOT_FOLDER = '../../../python_typing/'
+ROOT_FOLDER = 'data'
 REPOS_FOLDER = os.path.join(ROOT_FOLDER, 'repos')
 PROCESSED_FOLDER = os.path.join(ROOT_FOLDER, 'processed')
 STRIPPED_FOLDER = os.path.join(ROOT_FOLDER, 'stripped')
@@ -17,5 +17,5 @@ for dir_name, subdir_list, file_list in os.walk(PROCESSED_FOLDER):
         code_string = strip_hints.strip_file_to_string(full_path, no_ast=True)
         # print(code_string)
         target_file = os.path.join(STRIPPED_FOLDER, filename)
-        with open(target_file, 'w', encoding="utf-8") as curr_file:
-            print(code_string, file=curr_file)
+        with open(target_file, 'w', encoding="utf-8", newline='') as curr_file:
+            curr_file.write(code_string)
