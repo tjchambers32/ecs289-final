@@ -62,9 +62,6 @@ def find_type_hint(filename, token):
                 
                 return split_line[func_end_idx+1]
         
-        # print(split_line)
-        # print(split_stripped_line)
-        # print(token_idx)
         if ':' in split_line[token_idx]:
             if split_line[token_idx].replace(':', '') == split_stripped_line[token_idx]:
                 # found potential type suggestion
@@ -84,12 +81,7 @@ total_tokens = 0
 total_typed_tokens = 0
 total = 0
 for dir_name, subdir_list, file_list in os.walk(STRIPPED_FOLDER):
-    # print(f'---{dir_name}---')
-    # print(subdir_list)
-    # print(file_list)
     py_file_list = [py_file for py_file in file_list if py_file.lower().endswith('.py')]
-    # print(f'py_file_list: {py_file_list}')
-    if count > 0: break
     for py_file in py_file_list:
         if count < 2057:
             count += 1
@@ -106,7 +98,6 @@ for dir_name, subdir_list, file_list in os.walk(STRIPPED_FOLDER):
                     _string = five_tuple.string
                     _type = tokenize.tok_name[five_tuple.type]
                     _exact_type = tokenize.tok_name[five_tuple.exact_type]
-                    # print(five_tuple)
                     if _type == 'NEWLINE':
                         continue
                     if _string.strip() == '':
@@ -120,12 +111,4 @@ for dir_name, subdir_list, file_list in os.walk(STRIPPED_FOLDER):
                         continue
                     _type_hint = find_type_hint(py_file, five_tuple)
                     print_str = f'{_string} {_type} {_exact_type} {_type_hint}'
-                    # print(print_str)
-                    # print(f'start: {five_tuple.start}')
-                    # print(f'end: {five_tuple.end}')
-                    # print(f'line: {five_tuple.line}')
                     print(print_str, file=out)
-
-print(f'total: {total}')
-print(f'total typed lines: {total_typed_tokens}')
-print(f'total lines: {total_tokens}')
