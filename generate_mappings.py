@@ -1,5 +1,14 @@
 # code taken from here -> https://github.com/zalandoresearch/flair/issues/179
 # adapt it so it will work with MY code instead
+import os
+
+import numpy
+
+ROOT_FOLDER = 'data'
+REPOS_FOLDER = os.path.join(ROOT_FOLDER, 'repos')
+PROCESSED_FOLDER = os.path.join(ROOT_FOLDER, 'processed')
+STRIPPED_FOLDER = os.path.join(ROOT_FOLDER, 'stripped')
+TOKENIZED_FOLDER = os.path.join(ROOT_FOLDER, 'tokenized')
 
 
 # make an empty character dictionary
@@ -13,7 +22,7 @@ counter = collections.Counter()
 processed = 0
 
 import glob
-files = glob.glob('/path/to/your/corpus/files/*.*')
+files = glob.glob(os.path.join(TOKENIZED_FOLDER, '*.*'))
 
 print(files)
 for file in files:
@@ -58,7 +67,8 @@ for letter, count in counter.most_common():
 print(char_dictionary.item2idx)
 
 import pickle
-with open('/path/to/your_char_mappings', 'wb') as f:
+vocab_file = os.path.join(ROOT_FOLDER, 'vocab.txt')
+with open(vocab_file, 'wb') as f:
     mappings = {
         'idx2item': char_dictionary.idx2item,
         'item2idx': char_dictionary.item2idx

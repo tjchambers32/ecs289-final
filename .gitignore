@@ -2,6 +2,7 @@
 dataset/
 raw_dataset/
 data/
+resources/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -9,7 +9,6 @@ REPOS_FOLDER = os.path.join(ROOT_FOLDER, 'repos')
 PROCESSED_FOLDER = os.path.join(ROOT_FOLDER, 'processed')
 STRIPPED_FOLDER = os.path.join(ROOT_FOLDER, 'stripped')
 TOKENIZED_FOLDER = os.path.join(ROOT_FOLDER, 'tokenized')
-TRAIN_FILE = os.path.join(ROOT_FOLDER, 'train.txt')
 
 def find_type_hint(filename, token):
     _string = token.string
