@@ -1,8 +1,5 @@
 # code taken from here -> https://github.com/zalandoresearch/flair/issues/179
-# adapt it so it will work with MY code instead
 import os
-
-import numpy
 
 ROOT_FOLDER = 'data'
 REPOS_FOLDER = os.path.join(ROOT_FOLDER, 'repos')

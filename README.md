@@ -27,19 +27,30 @@ Another way that some researchers have attempted to predict types is using stati
 The initial three papers use machine learning to predict types, but they are all specifically built for JavaScript or TypeScript. The later papers predict types for python, but both use static analysis tools. This project aims to predict types for python using natural language information. Although the model has changed, this project was originally nicknamed "DeepTyper for Python".
 
 ## Data Gathering
-
-```
---explaining the flow chart of the data gathering process, starting with your
-
-raw sources.
-```
-
 Initially, this project attempted to use a dataset from the Software Reliability Lab at ETH Zurich. However, in the 150,000 python files included in the dataset, not a single one of them used python's typing module. This can probably be attributed to the fact that this dataset must have been generated prior to 2015 when the typing module was added in the release of Python 3.5.
 
 Instead, I generated my own dataset of python files by [searching github](https://github.com/search?p=99&q=%22from+typing+import%22+NOT+%22rasa_nlu%22+-filename%3Aann_module.py+-filename%3Abasecommand.py+-filename%3Atyping.py+-filename%3Atest.py+extension%3A.py&type=Code) and cloning repos. The search I used started out straightforward, but became more specific and complex as I continued to find duplicate results.
 
 Combing through much of the possible code on github that contained the phrase `import typing` or `from typing import`, I was able to find 2062 python files that included the typing module. This amounted to 1,068,993 total lines of code. While this felt like a great accomplishment, I realize that ultimately, it is way too small. In 1 million lines of code there are only around 10,000 total type annotations.
 
+Data preparation happens in several files.
+
+1. `explore.py` iterates over every repo in the `repos` folder and copies over any files that contain the typing module into the `processed` folder, while adding an ID, to avoid name collisions.
+2. `strip_hints_from_processed.py` iterates over every file in the `processed` folder and strips out all type hints. This uses the `strip_hints` python module. After the type hints are stripped, each file is copied into the `stripped` folder.
+3. `flair_prepare.py` tokenizes the python files. It splits each token onto it's own line and tags it with it's token_type, exact_type, and type_suggestion.
+```
+def require_version_gte(pkg_name: str, version: str) -> None:
+```
+
+```
+def require_version_gte(pkg_name     , version     )      :
+```
+
+```
+require_version_gte NAME NAME None
+pkg_name NAME NAME str
+version NAME NAME str
+```
 
 ## Current Progress
 
@@ -57,6 +68,8 @@ Hackathon project.
 
 ## Diagrams
 
+
+# TODO
 3 What Data you gathered, and how you did that. Refer to diagram below.
 
 4 Carefully document your work so far, so someone has a chance of picking it up. 
