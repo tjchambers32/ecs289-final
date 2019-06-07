@@ -20,8 +20,20 @@ Why have python types not become more mainstream in python projects? This work d
 Instead, this work aims to provide a simple way to for developers to start adopting type annotations. 
 
 ## Prior Work
+2 Prior work in the area, and the precise contribution of your project, and (if applicable) how it goes beyond. Include citations
+
+Prior work in this area centers around two groups of research. Several papers revolve around the topic of Natural Language Processing for Type Inference. [DeepTyper](http://vhellendoorn.github.io/PDF/fse2018-j2t.pdf) is a deep learning model that understands which types naturally occur in certain contexts and relations and can provide _type suggestions_. DeepTyper specifically trains on TypeScript files, which contain type suggesetions, and then can be run on JavaScript or TypeScript to predict types. [JSNice](http://jsnice.org/) is another tool that can be used to predict types from JavaScript code. However, instead of using Natural Language Processing to guess at types, JSNice takes an input program and builds a dependency network, then leverages Conditional Random Fields to predict type annotations. A third tool, NL2Type also uses natural language information to predict types. Evidently, the set of identifiers that get accurately predicted from DeepTyper or NL2Type is somewhat orthogonal to the identifiers that get predicted from JSNice. This means that combining two of them actually yields significantly better results than either of them alone.
+
+Another way that some researchers have attempted to predict types is using static analysis tools. [Typpete](https://github.com/caterinaurban/Typpete) is an SMT-based tool for static type inference. It uses the Z3 solver from Microsoft Research. Another paper does [Probabilistic Type Inference](https://dl.acm.org/citation.cfm?id=2950343) for python. This paper aggregates the probability of a variable type throughout a program, eventually converging on a solution. 
+
+The initial three papers use machine learning to predict types, but they are all specifically built for JavaScript or TypeScript. The later papers predict types for python, but both use static analysis tools. This project aims to predict types for python using natural language information. Although the model has changed, this project was originally nicknamed "DeepTyper for Python".
 
 ## Data Gathering
+Initially, this project attempted to use a dataset from the Software Reliability Lab at ETH Zurich. However, in the 150,000 python files included in the dataset, not a single one of them used python's typing module. This can probably be attributed to the fact that this dataset must have been generated prior to 2015 when the typing module was added in the release of Python 3.5.
+
+Instead, I generated my own dataset of python files by [searching github](https://github.com/search?p=99&q=%22from+typing+import%22+NOT+%22rasa_nlu%22+-filename%3Aann_module.py+-filename%3Abasecommand.py+-filename%3Atyping.py+-filename%3Atest.py+extension%3A.py&type=Code) and cloning repos. The search I used started out straightforward, but became more specific and complex as I continued to find duplicate results.
+
+Combing through much of the possible code on github that contained the phrase `import typing` or `from typing import`, I was able to find 2062 python files that included the typing module. 
 
 ## Current Progress
 
@@ -30,12 +42,11 @@ Instead, this work aims to provide a simple way to for developers to start adopt
 ### Data/Source Files
 
 ## Future Work
+Hackathon project.
 
 ## Related Work
 
 ## Diagrams
-
-2 Prior work in the area, and the precise contribution of your project, and (if applicable) how it goes beyond. Include citations
 
 3 What Data you gathered, and how you did that. Refer to diagram below.
 
