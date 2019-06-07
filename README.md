@@ -37,7 +37,7 @@ Data preparation happens in several files.
 
 1. `explore.py` iterates over every repo in the `repos` folder and copies over any files that contain the typing module into the `processed` folder, while adding an ID, to avoid name collisions.
 2. `strip_hints_from_processed.py` iterates over every file in the `processed` folder and strips out all type hints. This uses the `strip_hints` python module. After the type hints are stripped, each file is copied into the `stripped` folder.
-3. `flair_prepare.py` tokenizes the python files. It splits each token onto it's own line and tags it with it's token_type, exact_type, and type_suggestion. It then copies each of the files into the `tokenized` folder.
+3. `flair_prepare.py` tokenizes the python files. It splits each token onto it's own line and tags it with it's token_type, exact_type, and type_suggestion. It then copies each of the files into the `tokenized` folder as a .txt file.
 
 
 A function declaration in the `processed` folder might look like this:
@@ -56,6 +56,15 @@ version NAME NAME str
 ```
 
 ## Current Progress
+Once the data is prepared, it can be used to train a model. I am using the new framework [Flair](https://github.com/zalandoresearch/flair). Their documentation is fantastic and it was extremely easy to understand how to prepare my data. They also have a lot of code snippets showing how to use their framework. Flair is built directly on top of pytorch. Other than pytorch, few other libraries are required.
+
+First, in order to train a language model, I needed to generate character mappings. That way, during training, I could use my own pre-built dictionary based on actual python code, instead of a generic english dictionary. The code to generate the mappings is in `generate_mappings.py`.
+
+Although Flair is easy to get set up with, I have run into several issues actually trying to train using it.
+
+1. The first issue I have run into relates to trying to train a model when input data has sentences of length 0. This happens because occasionally my .txt files had blank lines in them. While it is trivial to remove the blank lines, I wanted to avoid changing my data files, since I feared it might break how Flair reads in sentences. I had read in this [github issue](https://github.com/zalandoresearch/flair/issues/33) that if I was using the latest version of Flair, this shouldn't be a problem anyway. When I attempted to use the fix suggested in the github issue to just remove the empty sentences, I ran into another issue. It turns out that Flair has started using the python `property` decarator for the `train`, `test`, and `dev` class variables, which means that they are not directly settable anymore. This left me with no other choice than to remove all blank lines from my tokenized .txt files.
+2. Next, I ran into a specific issue because I am running the code on my PC, using Windows 10 64 bit. I opened a [github issue](https://github.com/zalandoresearch/flair/issues/777) on Flair's repository. I dug through Flair's code for a bit, attempting to implement the fix found in this [pytorch issue](https://github.com/pytorch/pytorch/issues/7485), but was ultimately unsuccessful.
+3. Lastly, I ported my code over to a google cloud VM. Since I was low on credits, I set up the VM with a Tesla P100 GPU and only 8GB of RAM. In hindsight, I should have given it significantly more RAM. Now, on Linux, I was able to get `train.py` to actually start training on my tokenized data. However, I ran it for several hours it never completed the first epoch. I believe if I were to re-run this on a VM with something like 64GB of memory I might see different results.
 
 ### Directories
 
