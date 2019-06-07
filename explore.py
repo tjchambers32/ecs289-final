@@ -14,12 +14,7 @@ total_lines = 0
 total_typed_lines = 0
 total = 0
 for dir_name, subdir_list, file_list in os.walk(REPOS_FOLDER):
-    # print(f'---{dir_name}---')
-    # print(subdir_list)
-    # print(file_list)
     py_file_list = [py_file for py_file in file_list if py_file.lower().endswith('.py')]
-    # print(f'py_file_list: {py_file_list}')
-    if count > 35000: break
     for py_file in py_file_list:
         total += 1
         count += 1
@@ -27,7 +22,6 @@ for dir_name, subdir_list, file_list in os.walk(REPOS_FOLDER):
         with open(target_file, 'r', encoding="ISO-8859-1") as curr_file:
             lines = curr_file.readlines()
             total_lines += len(lines)
-            # print(lines)
             import_1 = 'import typing'
             import_2 = 'from typing import'
             match_1 = next((s for s in lines if import_1 in s), None) # returns 'abc123'
