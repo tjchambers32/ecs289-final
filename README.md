@@ -37,15 +37,18 @@ Data preparation happens in several files.
 
 1. `explore.py` iterates over every repo in the `repos` folder and copies over any files that contain the typing module into the `processed` folder, while adding an ID, to avoid name collisions.
 2. `strip_hints_from_processed.py` iterates over every file in the `processed` folder and strips out all type hints. This uses the `strip_hints` python module. After the type hints are stripped, each file is copied into the `stripped` folder.
-3. `flair_prepare.py` tokenizes the python files. It splits each token onto it's own line and tags it with it's token_type, exact_type, and type_suggestion.
+3. `flair_prepare.py` tokenizes the python files. It splits each token onto it's own line and tags it with it's token_type, exact_type, and type_suggestion. It then copies each of the files into the `tokenized` folder.
+
+
+A function declaration in the `processed` folder might look like this:
 ```
 def require_version_gte(pkg_name: str, version: str) -> None:
 ```
-
+It would then have the type hints stripped and be copied to the `stripped` folder.
 ```
 def require_version_gte(pkg_name     , version     )      :
 ```
-
+Afterward, it is tokenized and placed in the `tokenized` folder.
 ```
 require_version_gte NAME NAME None
 pkg_name NAME NAME str
