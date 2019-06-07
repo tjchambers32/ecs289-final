@@ -1,3 +1,10 @@
+#
+# This file is now defunct, since I didn't end up using the 
+# ETH Zurich python dataset, since it didn't contain any
+# python code with type annotations
+#
+# Leaving in the repo just to show an attempt was made.
+#
 import pandas as pd
 import ijson
 
