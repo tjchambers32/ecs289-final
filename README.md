@@ -78,6 +78,7 @@ To continue this work, a few things should be done:
 * Fix [bug](https://github.com/tjchambers32/ecs289-final/issues/3) in type suggestion finder that sometimes misses a function's return type when it's on a different line.
 * Fix flair bugs (outlined in this readme) that are preventing training.
 * Find how many repos have added types later vs. used types from the beginning. If there are many repos that added types later, we can train on the commits when types are added and test on last commits before types were added. This would remove the need for stripping the type hints ourselves.
+* Answer the RQ: Why have python types not been adopted more generally? What is preventing the python community from utilizing type annotations in their code?
 
 At LLNL, we participate regularly in hackathons. I plan on garnering interest in continuing this project for our next hackathon. At the hackathon, we will have access to a server running Ubuntu with a GTX 1080 Ti and 64GB of RAM. This should help us avoid some of the errors I've already run into.
 
