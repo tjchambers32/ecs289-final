@@ -68,27 +68,22 @@ Although Flair is easy to get set up with, I have run into several issues actual
 2. Next, I ran into a specific issue because I am running the code on my PC, using Windows 10 64 bit. I opened a [github issue](https://github.com/zalandoresearch/flair/issues/777) on Flair's repository. I dug through Flair's code for a bit, attempting to implement the fix found in this [pytorch issue](https://github.com/pytorch/pytorch/issues/7485), but was ultimately unsuccessful.
 3. Lastly, I ported my code over to a google cloud VM. Since I was low on credits, I set up the VM with a Tesla P100 GPU and only 8GB of RAM. In hindsight, I should have given it significantly more RAM. Now, on Linux, I was able to get `train.py` to actually start training on my tokenized data. However, I ran it for several hours and it never completed the first epoch. I believe if I were to re-run this on a VM with something like 64GB of memory I might see different results.
 
-Assuming I had gotten past the Flair bugs that I ran into, I had planned to use flair's built in `train` method.
+Assuming I had gotten past the Flair bugs that I ran into, I had planned to use flair's built in `train` method. The `train` method runs on a `tagger`, which I create using Flair's GloVe embeddings and my own character dictionary.  
 
 ![nn_diagram][nn_diagram]
 
 ## Future Work
 To continue this work, a few things should be done:
 * Gather much more data. You'll probably need 10x-100x the amount of data I currently have.
-* Fix bug in type suggestion finder that sometimes misses a function's return type when it's on a different line.
-* Fix flair bugs that are preventing training.
-* Find how many repos have added types later vs. used types from the beginning
+* Fix [bug](https://github.com/tjchambers32/ecs289-final/issues/3) in type suggestion finder that sometimes misses a function's return type when it's on a different line.
+* Fix flair bugs (outlined in this readme) that are preventing training.
+* Find how many repos have added types later vs. used types from the beginning. If there are many repos that added types later, we can train on the commits when types are added and test on last commits before types were added. This would remove the need for stripping the type hints ourselves.
 
 At LLNL, we participate regularly in hackathons. I plan on garnering interest in continuing this project for our next hackathon. At the hackathon, we will have access to a server running Ubuntu with a GTX 1080 Ti and 64GB of RAM. This should help us avoid some of the errors I've already run into.
 
 ## Bibliography
 
 
+
 [data_flow]: https://github.com/tjchambers32/ecs289-final/raw/master/images/data_flow_diagram.jpeg
 [nn_diagram]: https://github.com/tjchambers32/ecs289-final/raw/master/images/neural_net_diagram.jpeg
-
-# TODO
-
---Diagram of of your machine learner, including layers, showing both test and
-
-training time information flows.
