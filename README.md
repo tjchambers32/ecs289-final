@@ -79,7 +79,7 @@ At LLNL, we participate regularly in hackathons. I plan on garnering interest in
 
 ## Diagrams
 
-[data_flow]: 
+[data_flow]: https://github.com/tjchambers32/ecs289-final/tree/master/images/data_flow_diagram.jpeg
 
 # TODO
 3 What Data you gathered, and how you did that. Refer to diagram below.
