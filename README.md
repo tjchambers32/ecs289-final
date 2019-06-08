@@ -55,6 +55,8 @@ pkg_name NAME NAME str
 version NAME NAME str
 ```
 
+![data flow diagram][data_flow]
+
 ## Current Progress
 Once the data is prepared, it can be used to train a model. I am using the new framework [Flair](https://github.com/zalandoresearch/flair). Their documentation is fantastic and it was extremely easy to understand how to prepare my data. They also have a lot of code snippets showing how to use their framework. Flair is built directly on top of pytorch. Other than pytorch, few other libraries are required.
 
@@ -67,15 +69,17 @@ Although Flair is easy to get set up with, I have run into several issues actual
 3. Lastly, I ported my code over to a google cloud VM. Since I was low on credits, I set up the VM with a Tesla P100 GPU and only 8GB of RAM. In hindsight, I should have given it significantly more RAM. Now, on Linux, I was able to get `train.py` to actually start training on my tokenized data. However, I ran it for several hours and it never completed the first epoch. I believe if I were to re-run this on a VM with something like 64GB of memory I might see different results.
 
 ## Future Work
-Gather much more data. 10x or 100x.
-Fix flair bugs preventing training.
+To continue this work, a few things could be done:
+* Gather much more data. 10x or 100x.
+* Fix bug in type suggestion finder that sometimes misses a function's return type when it's on a different line.
+* Fix flair bugs that are preventing training.
+* Find how many repos have added types later vs. used types from the beginning
 
-Hackathon project.
-
-## Related Work
+At LLNL, we participate regularly in hackathons. I plan on garnering interest in continuing this project for our next hackathon. At the hackathon, we will have access to a server running Ubuntu with a GTX 1080 Ti and 64GB of RAM. This should help us avoid some of the errors I've already run into.
 
 ## Diagrams
 
+[data_flow]: 
 
 # TODO
 3 What Data you gathered, and how you did that. Refer to diagram below.
