@@ -68,41 +68,26 @@ Although Flair is easy to get set up with, I have run into several issues actual
 2. Next, I ran into a specific issue because I am running the code on my PC, using Windows 10 64 bit. I opened a [github issue](https://github.com/zalandoresearch/flair/issues/777) on Flair's repository. I dug through Flair's code for a bit, attempting to implement the fix found in this [pytorch issue](https://github.com/pytorch/pytorch/issues/7485), but was ultimately unsuccessful.
 3. Lastly, I ported my code over to a google cloud VM. Since I was low on credits, I set up the VM with a Tesla P100 GPU and only 8GB of RAM. In hindsight, I should have given it significantly more RAM. Now, on Linux, I was able to get `train.py` to actually start training on my tokenized data. However, I ran it for several hours and it never completed the first epoch. I believe if I were to re-run this on a VM with something like 64GB of memory I might see different results.
 
+Assuming I had gotten past the Flair bugs that I ran into, I had planned to use flair's built in `train` method.
+
+![nn_diagram][nn_diagram]
+
 ## Future Work
-To continue this work, a few things could be done:
-* Gather much more data. 10x or 100x.
+To continue this work, a few things should be done:
+* Gather much more data. You'll probably need 10x-100x the amount of data I currently have.
 * Fix bug in type suggestion finder that sometimes misses a function's return type when it's on a different line.
 * Fix flair bugs that are preventing training.
 * Find how many repos have added types later vs. used types from the beginning
 
 At LLNL, we participate regularly in hackathons. I plan on garnering interest in continuing this project for our next hackathon. At the hackathon, we will have access to a server running Ubuntu with a GTX 1080 Ti and 64GB of RAM. This should help us avoid some of the errors I've already run into.
 
-## Diagrams
+## Bibliography
+
 
 [data_flow]: https://github.com/tjchambers32/ecs289-final/raw/master/images/data_flow_diagram.jpeg
+[nn_diagram]: https://github.com/tjchambers32/ecs289-final/raw/master/images/neural_net_diagram.jpeg
 
 # TODO
-3 What Data you gathered, and how you did that. Refer to diagram below.
-
-4 Carefully document your work so far, so someone has a chance of picking it up. 
-
---explanation of directories in the Repo.
-
---Explanation of data/source files, and their purpose, shape, algorithm, etc. Please relate the files in the directory to the parts of the diagrams (see below for diagram requirements)  
-
-5 Bibliography . (Related papers, cited)
-
-6 Diagrams (could be in line, or after bibliography)
-
-The  report should  include two  diagrams (diagrams  about 1/3  to 1/2
-
-page, clearly legible)
-
---explaining the flow chart of the data gathering process, starting with your
-
-raw sources.
-
- 
 
 --Diagram of of your machine learner, including layers, showing both test and
 

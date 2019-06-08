@@ -20,9 +20,10 @@ corpus: Corpus = ColumnCorpus(ROOT_FOLDER,
                               test_file='test.txt',
                               dev_file='dev.txt')
 print(corpus)
+
 # remove empty sentences
 # print(type(corpus.train))
-corpus.train = [sentence for sentence in corpus.train if len(sentence) > 0]
+# corpus.train = [sentence for sentence in corpus.train if len(sentence) > 0]
 # corpus.test = [sentence for sentence in corpus.test if len(sentence) > 0]
 # corpus.dev = [sentence for sentence in corpus.dev if len(sentence) > 0]
 # print(corpus)
@@ -40,7 +41,7 @@ embedding_types: List[TokenEmbeddings] = [
     WordEmbeddings('glove'),
 
     # comment in this line to use character embeddings
-    CharacterEmbeddings(),
+    CharacterEmbeddings(tag_dictionary),
 
     # comment in these lines to use flair embeddings
     # FlairEmbeddings('news-forward'),
