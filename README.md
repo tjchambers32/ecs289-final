@@ -82,7 +82,16 @@ To continue this work, a few things should be done:
 At LLNL, we participate regularly in hackathons. I plan on garnering interest in continuing this project for our next hackathon. At the hackathon, we will have access to a server running Ubuntu with a GTX 1080 Ti and 64GB of RAM. This should help us avoid some of the errors I've already run into.
 
 ## Bibliography
+**DeepTyper** - Vincent J. Hellendoorn, Christian Bird, Earl T. Barr, and Miltiadis Allamanis. 2018. Deep learning type inference. In Proceedings of the 2018 26th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2018). ACM, New York, NY, USA, 152-162. DOI: https://doi.org/10.1145/3236024.3236051
 
+**JSNice** - 
+Veselin Raychev, Martin Vechev, and Andreas Krause. 2019. Predicting program properties from 'big code'. Commun. ACM 62, 3 (February 2019), 99-107. DOI: https://doi.org/10.1145/3306204
+
+**NL2Type** - Rabee Sohail Malik, Jibesh Patra, and Michael Pradel. 2019. NL2Type: inferring JavaScript function types from natural language information. In Proceedings of the 41st International Conference on Software Engineering (ICSE '19). IEEE Press, Piscataway, NJ, USA, 304-315. DOI: https://doi.org/10.1109/ICSE.2019.00045
+
+**Typpete** - Hassan M., Urban C., Eilers M., Müller P. (2018) MaxSMT-Based Type Inference for Python 3. In: Chockler H., Weissenbacher G. (eds) Computer Aided Verification. CAV 2018. Lecture Notes in Computer Science, vol 10982. Springer, Cham. DOI: https://doi.org/10.1007/978-3-319-96142-2_2
+
+**Python Probabilistic Type Inference** - Zhaogui Xu, Xiangyu Zhang, Lin Chen, Kexin Pei, and Baowen Xu. 2016. Python probabilistic type inference with natural language support. In Proceedings of the 2016 24th ACM SIGSOFT International Symposium on Foundations of Software Engineering (FSE 2016). ACM, New York, NY, USA, 607-618. DOI: https://doi.org/10.1145/2950290.2950343
 
 
 [data_flow]: https://github.com/tjchambers32/ecs289-final/raw/master/images/data_flow_diagram.jpeg
