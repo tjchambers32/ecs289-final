@@ -27,7 +27,7 @@ Another way that some researchers have attempted to predict types is using stati
 The initial three papers use machine learning to predict types, but they are all specifically built for JavaScript or TypeScript. The later papers predict types for python, but both use static analysis tools. This project aims to predict types for python using natural language information. Although the model has changed, this project was originally nicknamed "DeepTyper for Python".
 
 ## Data Gathering
-Initially, this project attempted to use a dataset from the Software Reliability Lab at ETH Zurich. However, in the 150,000 python files included in the dataset, not a single one of them used python's typing module. This can probably be attributed to the fact that this dataset must have been generated prior to 2015 when the typing module was added in the release of Python 3.5.
+Initially, this project attempted to use a [dataset](https://www.sri.inf.ethz.ch/py150) from the Software Reliability Lab at ETH Zurich. However, in the 150,000 python files included in the dataset, not a single one of them used python's typing module. This can probably be attributed to the fact that this dataset must have been generated prior to when the typing module was added in the release of Python 3.5 in 2015.
 
 Instead, I generated my own dataset of python files by [searching github](https://github.com/search?p=99&q=%22from+typing+import%22+NOT+%22rasa_nlu%22+-filename%3Aann_module.py+-filename%3Abasecommand.py+-filename%3Atyping.py+-filename%3Atest.py+extension%3A.py&type=Code) and cloning repos. The search I used started out straightforward, but became more specific and complex as I continued to find duplicate results.
 
